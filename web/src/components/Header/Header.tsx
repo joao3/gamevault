@@ -15,10 +15,10 @@ const Header = () => {
 
       <nav>
         <ul className='navLinks'>
-          <li style={{ paddingLeft: '0px' }}><NavLink to='#'> Home </NavLink></li>
+          <li><NavLink to='#'> Home </NavLink></li>
           <li><NavLink to='#'> Genres </NavLink></li>
           <li><NavLink to='#'> Lists </NavLink></li>
-          <li style={{ paddingRight: '0px' }}><NavLink to='#'> Plataforms </NavLink></li>
+          <li><NavLink to='#'> Plataforms </NavLink></li>
         </ul>
       </nav>
 
@@ -29,8 +29,10 @@ const Header = () => {
         </div>
       </div>
 
-      <button></button>
-      <button></button>
+      <div className='buttons'>
+        <button className='signInButton'>Sign In</button>
+        <button className='signUpButton'>Sign Up</button>
+      </div>
 
     </header>
   );
