@@ -5,12 +5,18 @@ import { Link, NavLink } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Header = () => {
+  const [width, setWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
+
   return (
     <header className="header">
 
 
       <Link to='#'>
-        <img className="logoHeader" src="logo.svg" alt="logo" />
+        <img className="logoHeader" src={width > 1500 ? 'logo.svg' : 'logo-onlyicon.png'} alt="logo" />
       </Link>
 
       <nav>
@@ -23,7 +29,7 @@ const Header = () => {
       </nav>
 
       <div className='searchBar'>
-        <SearchIcon style={{ color: '#7F8889', fontSize: '32px', margin: '0px 16px' }} />
+        <SearchIcon className='searchIcon' />
         <div className='inputField'>
           <input type="text" placeholder='Search' name="" id="" />
         </div>
