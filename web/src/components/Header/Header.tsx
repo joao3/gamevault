@@ -16,14 +16,14 @@ const Header = () => {
 
 
       <Link to='#'>
-        <img className="logoHeader" src={width > 1500 ? 'logo.svg' : 'logo-onlyicon.png'} alt="logo" />
+        <img className="logoHeader" src={width > 1510 ? 'logo.svg' : 'logo-onlyicon.png'} alt="logo" />
       </Link>
 
       <nav>
         <ul className='navLinks'>
           <li><NavLink to='#'> Home </NavLink></li>
-          <li><NavLink to='#'> Genres </NavLink></li>
           <li><NavLink to='#'> Lists </NavLink></li>
+          <li><NavLink to='#'> Genres </NavLink></li>
           <li><NavLink to='#'> Plataforms </NavLink></li>
         </ul>
       </nav>

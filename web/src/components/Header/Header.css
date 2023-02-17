@@ -4,7 +4,7 @@
   row-gap: 16px;
   flex-wrap: wrap;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0px 64px;
   align-items: center;
 }
@@ -61,7 +61,7 @@
 .buttons {
   width: 208px;
   display: flex;
-  margin-left: 32px;
+  margin-left: 16px;
   justify-content: space-between;
 }
 
@@ -90,7 +90,7 @@
   background-color: var(--purple);
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1510px) {
   .header>nav>ul>li {
     font-size: 18px;
     padding: 0px 16px;
