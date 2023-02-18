@@ -1,6 +1,10 @@
 .header {
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 100;
+  width: 100%;
   background-color: var(--dark2);
-  min-height: 116px;
+  min-height: 100px;
   row-gap: 16px;
   flex-wrap: wrap;
   display: flex;
