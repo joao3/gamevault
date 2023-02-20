@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
 import GamesCarousel from '../../components/GamesCarousel/GamesCarousel';
+import Footer from '../../components/Footer/Footer';
 
 import './Home.css';
 
@@ -19,6 +20,7 @@ const Home = () => {
       <GamesCarousel games={games} />
       <GamesCarousel games={games} />
       <GamesCarousel games={games} />
+      <Footer />
     </>
   );
 }
