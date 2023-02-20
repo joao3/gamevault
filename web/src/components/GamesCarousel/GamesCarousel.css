@@ -1,0 +1,74 @@
+.gamesCarousel {
+  margin-top: -88px;
+  margin-bottom: 124px;
+}
+
+.gamesCarousel > .title {
+  display: flex;
+  align-items: center;
+  margin-left: 64px;
+}
+
+.gamesCarousel > .title > .decoration {
+  background-color: var(--purple);
+  height: 39px;
+  width: 8px;
+  border-radius: 16px;
+  display: inline-block;
+}
+
+.gamesCarousel > .title > h2 {
+  font-size: 26px;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 16px;
+}
+
+.gamesCarousel > .carouselContainer > .carousel {
+  display: flex;
+  margin-top: 16px;
+  overflow: hidden;
+  margin-left: 53px;
+  transition: all 0.5s ease;
+}
+
+.gamesCarousel > .carouselContainer > .carousel > img {
+  max-width: 222px;
+  transition: all 0.3s ease;
+  transform: scale(0.9);
+  cursor: pointer;
+}
+
+.gamesCarousel > .carouselContainer > .carousel > img:hover {
+  transform: scale(1);
+}
+
+.gamesCarousel > .carouselContainer > .button {
+  position: absolute;
+  background-color: rgba(26, 34, 41, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 296px;
+  z-index: 90;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.carouselContainer:hover .button {
+  opacity: 1;
+}
+
+.gamesCarousel > .carouselContainer > .letf {
+  left: 0;
+}
+
+.gamesCarousel > .carouselContainer > .right {
+  right: 0;
+}
+
+.gamesCarousel > .carouselContainer > .button > .buttonIcon {
+  font-size: 40px;
+}
