@@ -19,7 +19,7 @@ type props = {
 
 const GamesCarousel = (props: props) => {
   const games = props.games;
-  
+
   const initialMarginLeft = 53;
   const [deslocationX, setDeslocationX] = useState(initialMarginLeft);
 
@@ -32,7 +32,7 @@ const GamesCarousel = (props: props) => {
 
   const rightArrow = () => {
     let newDeslocation = deslocationX - step;
-    
+
     const screenWidth = window.innerWidth;
     const cardWidth = 222;
     const carouselCardsWidth = cardWidth * games.length;
@@ -59,8 +59,10 @@ const GamesCarousel = (props: props) => {
           <ChevronRightIcon className='buttonIcon' />
         </div>
 
-        <div className='carousel' style={{'marginLeft': deslocationX}}>
-          {games.map(game => <img key={game.id} src={`https://images.igdb.com/igdb/image/upload/t_720p/${game.cover.image_id}.jpg`} alt=''></img>)}
+        <div className='carousel' style={{ 'marginLeft': deslocationX }}>
+          {games.map(game => 
+            game.cover && 
+            <img key={game.id} src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt=''></img>)}
         </div>
       </div>
     </section>

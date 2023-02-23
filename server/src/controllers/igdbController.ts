@@ -43,7 +43,7 @@ class IgdbController {
     }
   };
 
-  static getRecentlyComingSoon = async (req: Request, res: Response) => {
+  static  getComingSoonGames = async (req: Request, res: Response) => {
     const query = `fields game; where date > ${(getCurrentTimestamp()).toString()}; limit 25; sort date asc;`;
     const apiResponse = await igdbRequest(query, "release_dates");
 
