@@ -5,7 +5,20 @@ import React, { useState } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-const GamesCarousel = ({ games }: { games: Array<string> }) => {
+type props = {
+  title: string,
+  games: Array<{
+    id: number,
+    name: string,
+    cover: {
+      id: number,
+      image_id: string
+    }
+  }>
+}
+
+const GamesCarousel = (props: props) => {
+  const games = props.games;
   
   const initialMarginLeft = 53;
   const [deslocationX, setDeslocationX] = useState(initialMarginLeft);
@@ -14,7 +27,6 @@ const GamesCarousel = ({ games }: { games: Array<string> }) => {
 
   const leftArrow = () => {
     let newDeslocation = deslocationX + step;
-    console.log(newDeslocation);
     setDeslocationX(newDeslocation > initialMarginLeft ? initialMarginLeft : newDeslocation);
   }
 
@@ -29,14 +41,13 @@ const GamesCarousel = ({ games }: { games: Array<string> }) => {
     if (carouselCardsWidth + 2 * initialMarginLeft > screenWidth) {
       setDeslocationX(newDeslocation < -endX ? -endX : newDeslocation);
     }
-    
   }
 
   return (
     <section className='gamesCarousel'>
       <div className='title'>
         <div className='decoration'></div>
-        <h2>Popular</h2>
+        <h2>{props.title}</h2>
       </div>
 
       <div className='carouselContainer'>
@@ -49,7 +60,7 @@ const GamesCarousel = ({ games }: { games: Array<string> }) => {
         </div>
 
         <div className='carousel' style={{'marginLeft': deslocationX}}>
-          {games.map(coverUrl => <img src={coverUrl} alt=''></img>)}
+          {games.map(game => <img key={game.id} src={`https://images.igdb.com/igdb/image/upload/t_720p/${game.cover.image_id}.jpg`} alt=''></img>)}
         </div>
       </div>
     </section>

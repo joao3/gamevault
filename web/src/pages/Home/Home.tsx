@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header/Header';
 import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
@@ -8,21 +8,55 @@ import Footer from '../../components/Footer/Footer';
 import './Home.css';
 
 const Home = () => {
-  const games = [];
-  for (let i = 0; i < 20; i++) {
-    games.push("https://images.igdb.com/igdb/image/upload/t_720p/co2gn3.jpg");
-  }
+  const [popularGames, setPopularGames] = useState([]);
+  const [recentlyReleasedGames, setRecentlyReleasedGames] = useState([]);
+  const [comingSoonGames, setComingSoonGames] = useState([]);
+
+  useEffect(() => {
+    const loadPopularGames = async () => {
+      const response = await fetch('http://localhost:8000/games/popular');
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setPopularGames(data);
+      }
+    };
+
+    const loadRecentlyReleasedGames = async () => {
+      const response = await fetch('http://localhost:8000/games/recently-released');
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setRecentlyReleasedGames(data);
+      }
+    };
+
+    const loadComingSoonGames = async () => {
+      const response = await fetch('http://localhost:8000/games/coming-soon');
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setComingSoonGames(data);
+      }
+    };
+
+    loadPopularGames();
+    loadRecentlyReleasedGames();
+    loadComingSoonGames();
+  }, []);
+
 
   return (
     <>
       <Header />
       <FeaturedGame />
-      <GamesCarousel games={games} />
-      <GamesCarousel games={games} />
-      <GamesCarousel games={games} />
+      <GamesCarousel title='Popular' games={popularGames} />
+      <GamesCarousel title='Recently Released' games={recentlyReleasedGames} />
+      <GamesCarousel title='Coming Soon' games={comingSoonGames} />
+
       <Footer />
     </>
   );
-}
+};
 
 export default Home;
