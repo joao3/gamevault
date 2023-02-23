@@ -2,7 +2,7 @@ import fetch, { Response } from 'node-fetch';
 
 require('dotenv').config();
 
-const igdbRequest = async (query: string): Promise<Response> => {
+const igdbRequest = async (query: string, endPoint: string): Promise<Response> => {
   const requestConfig = {
     method: 'post',
     body: `${query}`,
@@ -13,8 +13,7 @@ const igdbRequest = async (query: string): Promise<Response> => {
     }
   };
 
-  const response = await fetch('https://api.igdb.com/v4/games/', requestConfig);
-
+  const response = await fetch(`https://api.igdb.com/v4/${endPoint}`, requestConfig);
   return response;
 }
 

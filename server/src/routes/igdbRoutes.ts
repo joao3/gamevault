@@ -4,6 +4,8 @@ import IgdbController from '../controllers/igdbController';
 const router = express.Router();
 
 router
-  .get("/games/popular", IgdbController.getPopularGames);
+  .get("/games/popular", IgdbController.getPopularGames)
+  .get("/games/recently-released", IgdbController.getRecentlyReleasedGames)
+  .get("/games/coming-soon", IgdbController.getRecentlyComingSoon);
 
 export default router;
