@@ -43,6 +43,28 @@
   transform: scale(1);
 }
 
+.gamesCarousel > .carouselContainer > .carousel > .gameTitleCard {
+  width: 222px;
+  background-color: var(--dark2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  transform: scale(0.9);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.gamesCarousel > .carouselContainer > .carousel > .gameTitleCard:hover {
+  transform: scale(1);
+}
+
+.gamesCarousel > .carouselContainer > .carousel > .gameTitleCard > h3 {
+  text-align: center;
+  display: inline-block;
+  margin: 16px;
+}
+
 .gamesCarousel > .carouselContainer > .button {
   position: absolute;
   background-color: rgba(26, 34, 41, 0.8);

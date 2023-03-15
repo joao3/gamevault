@@ -61,8 +61,9 @@ const GamesCarousel = (props: props) => {
 
         <div className='carousel' style={{ 'marginLeft': deslocationX }}>
           {games.map(game => 
-            game.cover && 
-            <img key={game.id} src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt=''></img>)}
+            game.cover ? 
+            <img key={game.id} src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt=''></img> :
+            <div className='gameTitleCard'><h3>{game.name}</h3></div>)}
         </div>
       </div>
     </section>
