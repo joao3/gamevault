@@ -6,6 +6,7 @@ const router = express.Router();
 router
   .get("/games/popular", IgdbController.getPopularGames)
   .get("/games/recently-released", IgdbController.getRecentlyReleasedGames)
-  .get("/games/coming-soon", IgdbController.getComingSoonGames);
+  .get("/games/coming-soon", IgdbController.getComingSoonGames)
+  .get("/games/:gameId", IgdbController.getGameData);
 
 export default router;

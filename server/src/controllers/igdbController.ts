@@ -43,7 +43,7 @@ class IgdbController {
     }
   };
 
-  static  getComingSoonGames = async (req: Request, res: Response) => {
+  static getComingSoonGames = async (req: Request, res: Response) => {
     const query = `fields game; where date > ${(getCurrentTimestamp()).toString()}; limit 25; sort date asc;`;
     const apiResponse = await igdbRequest(query, "release_dates");
 
@@ -58,6 +58,30 @@ class IgdbController {
 
       const data = await getGamesByIdList(gamesIdList);
       res.status(200).json(data);
+    }
+  };
+
+  static getGameData = async (req: Request, res: Response) => {
+    const query = 
+    `fields 
+    name,
+    cover.*,
+    first_release_date,
+    genres,
+    platforms,
+    similar_games,
+    screenshots.image_id,
+    summary,
+    category,
+    total_rating,
+    artworks; 
+    where id = ${req.params.gameId};`
+
+    const apiResponse = await igdbRequest(query, "games");
+
+    if (apiResponse.status === 200) {
+      const gameData = await apiResponse.json();
+      res.status(200).json(gameData);
     }
   };
 }
