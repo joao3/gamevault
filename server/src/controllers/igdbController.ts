@@ -81,7 +81,7 @@ class IgdbController {
 
     if (apiResponse.status === 200) {
       const gameData = await apiResponse.json();
-      res.status(200).json(gameData);
+      res.status(200).json(gameData[0]);
     }
   };
 }

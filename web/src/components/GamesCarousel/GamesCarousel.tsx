@@ -1,6 +1,7 @@
 import './GamesCarousel.css'
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -60,10 +61,15 @@ const GamesCarousel = (props: props) => {
         </div>
 
         <div className='carousel' style={{ 'marginLeft': deslocationX }}>
-          {games.map(game => 
-            game.cover ? 
-            <img key={game.id} src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt=''></img> :
-            <div key={game.id} className='gameTitleCard'><h3>{game.name}</h3></div>)}
+          {
+            games.map(game =>
+            <Link to={`/games/${game.id}`} key={game.id} className='gameCardLink'>
+              {game.cover ?
+                <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt=''></img> :
+                <div className='gameTitleCard'><h3>{game.name}</h3></div>}
+            </Link>
+            )
+          }
         </div>
       </div>
     </section>

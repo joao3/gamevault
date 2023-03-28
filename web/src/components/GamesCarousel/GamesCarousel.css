@@ -32,18 +32,19 @@
   transition: all 0.5s ease;
 }
 
-.gamesCarousel > .carouselContainer > .carousel > img {
-  max-width: 222px;
+.gamesCarousel > .carouselContainer > .carousel > .gameCardLink > img {
+  width: 222px;
+  height: 295px;
   transition: all 0.3s ease;
   transform: scale(0.9);
   cursor: pointer;
 }
 
-.gamesCarousel > .carouselContainer > .carousel > img:hover {
+.gamesCarousel > .carouselContainer > .carousel > .gameCardLink > img:hover {
   transform: scale(1);
 }
 
-.gamesCarousel > .carouselContainer > .carousel > .gameTitleCard {
+.gamesCarousel > .carouselContainer > .carousel > .gameCardLink > .gameTitleCard {
   width: 222px;
   background-color: var(--dark2);
   display: flex;
@@ -55,11 +56,11 @@
   flex-shrink: 0;
 }
 
-.gamesCarousel > .carouselContainer > .carousel > .gameTitleCard:hover {
+.gamesCarousel > .carouselContainer > .carousel > .gameCardLink > .gameTitleCard:hover {
   transform: scale(1);
 }
 
-.gamesCarousel > .carouselContainer > .carousel > .gameTitleCard > h3 {
+.gamesCarousel > .carouselContainer > .carousel > .gameCardLink > .gameTitleCard > h3 {
   text-align: center;
   display: inline-block;
   margin: 16px;

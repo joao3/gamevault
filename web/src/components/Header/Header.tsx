@@ -14,14 +14,13 @@ const Header = () => {
   return (
     <header className="header">
 
-
-      <Link to='#'>
-        <img className="logoHeader" src={width > 1510 ? 'logo.svg' : 'logo-onlyicon.png'} alt="logo" />
+      <Link to='/'>
+        <img className="logoHeader" src={width > 1510 ? `${process.env.PUBLIC_URL}/logo.svg` : `${process.env.PUBLIC_URL}/logo-onlyicon.png`} alt="logo" />
       </Link>
 
       <nav>
         <ul className='navLinks'>
-          <li><NavLink to='#'> Home </NavLink></li>
+          <li><NavLink to='/'> Home </NavLink></li>
           <li><NavLink to='#'> Lists </NavLink></li>
           <li><NavLink to='#'> Genres </NavLink></li>
           <li><NavLink to='#'> Plataforms </NavLink></li>
