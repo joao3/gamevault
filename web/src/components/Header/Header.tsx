@@ -1,15 +1,22 @@
 import './Header.css';
 
-import React from "react";
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Header = () => {
-  const [width, setWidth] = React.useState(window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, []);
+
+  const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate(`/games/search?name=${searchValue}`);
+  }
 
   return (
     <header className="header">
@@ -27,12 +34,14 @@ const Header = () => {
         </ul>
       </nav>
 
-      <div className='searchBar'>
-        <SearchIcon className='searchIcon' />
+      <form className='searchBar' onSubmit={(e) => handleSearch(e)}>
+        <button className='searchButton'>
+          <SearchIcon className='searchIcon' />
+        </button>
         <div className='inputField'>
-          <input type="text" placeholder='Search' name="" id="" />
+          <input type="text" placeholder='Search' name="search" onChange={(e) => setSearchValue(e.target.value)} />
         </div>
-      </div>
+      </form>
 
       <div className='buttons'>
         <button className='signInButton'>Sign In</button>

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
 import './Game.css';
@@ -25,16 +24,29 @@ const Home = () => {
 
     loadGameData();
   }, [gameId]);
+  
 
   return (
     <>
-      <Header />
       {dataLoaded &&
-        <>
+        <main className='gameContent'>
           <h1>{gameData.name}</h1>
+
           <img src={`https://images.igdb.com/igdb/image/upload/t_720p/${gameData.cover.image_id}.jpg`} alt=''></img>
-          <p>{gameData.summary}</p>         
-        </>}
+
+          <h2>Genres</h2>
+          <ul>
+            {gameData.genres.map((genre: { id: number, name: string }) => <li key={genre.id}>{genre.name}</li>)}
+          </ul>
+
+          <h2>Platforms</h2>
+          <ul>
+            {gameData.platforms.map((platform: { id: number, name: string }) => <li key={platform.id}>{platform.name}</li>)}
+          </ul>
+
+          <h2>Description</h2>
+          <p>{gameData.summary}</p>
+        </main>}
       <Footer />
     </>
   );

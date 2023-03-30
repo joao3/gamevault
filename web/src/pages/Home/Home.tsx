@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import Header from '../../components/Header/Header';
 import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
 import GamesCarousel from '../../components/GamesCarousel/GamesCarousel';
 import Footer from '../../components/Footer/Footer';
@@ -48,7 +47,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <FeaturedGame />
       <GamesCarousel title='Popular' games={popularGames} />
       <GamesCarousel title='Recently Released' games={recentlyReleasedGames} />
