@@ -1,7 +1,7 @@
 import './Header.css';
 
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Header = () => {
@@ -17,6 +17,11 @@ const Header = () => {
     event.preventDefault();
     navigate(`/games/search?name=${searchValue}`);
   }
+
+  const location = useLocation();
+  useEffect(() => {
+    setSearchValue("");
+  }, [location.pathname]);
 
   return (
     <header className="header">
@@ -39,7 +44,7 @@ const Header = () => {
           <SearchIcon className='searchIcon' />
         </button>
         <div className='inputField'>
-          <input type="text" placeholder='Search' name="search" onChange={(e) => setSearchValue(e.target.value)} />
+          <input type="text" value={searchValue} placeholder='Search' name="search" onChange={(e) => setSearchValue(e.target.value)} />
         </div>
       </form>
 
