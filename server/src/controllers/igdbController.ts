@@ -87,13 +87,16 @@ class IgdbController {
 
   static searchByName = async (req: Request, res: Response) => {
     const searchQuery = req.query.name;
+    const pageNumber = Number(req.query.page);
+    const gamesPerPage = 49;
+    const offset = (pageNumber - 1) * gamesPerPage;
 
     if (!searchQuery) {
       res.status(400).send('Invalid query');
       return;
     }
 
-    const apiQuery = `fields name, cover.image_id; search "${searchQuery}"; limit 49;`;
+    const apiQuery = `fields name, cover.image_id; search "${searchQuery}"; offset ${offset}; limit ${gamesPerPage};`;
     const apiResponse = await igdbRequest(apiQuery, "games");
 
     if (apiResponse.status === 200) {

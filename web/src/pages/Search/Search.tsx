@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 
@@ -7,23 +7,61 @@ import './Search.css';
 const Search = () => {
   const [searchPrams] = useSearchParams();
   const searchQuery = searchPrams.get('name');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const [gamesData, setGamesData] = useState<any>({});
+  const [gamesData, setGamesData] = useState<any>([]);
   const [dataLoaded, setDataLoaded] = useState(false);
+
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const preveSearcgParamsRef = useRef(searchQuery);
+
+  const [gamesAreOver, setGamesAreOver] = useState(false);
+
+  const resetStates = () => {
+    setDataLoaded(false);
+    setCurrentPage(1);
+    setGamesData([]);
+  }
+
+  useEffect(() => {
+    if (!isFirstLoad && searchQuery !== preveSearcgParamsRef.current) {
+      resetStates();
+    }
+    setIsFirstLoad(false);
+    preveSearcgParamsRef.current = searchQuery;
+  }, [searchQuery]);
 
   useEffect(() => {
     const loadGamesData = async () => {
-      const response = await fetch(`http://localhost:8000/games/search?name=${searchQuery}`);
-
+      const response = await fetch(`http://localhost:8000/games/search?name=${searchQuery}&page=${currentPage}`);
       if (response.status === 200) {
         const data = await response.json();
-        setGamesData(data);
-        setDataLoaded(true);
+        if (data.length === 0) {
+          setGamesAreOver(true);
+        }
+        else {
+          setGamesData([...gamesData, ...data]);
+          setDataLoaded(true);
+        }
       }
     };
 
     loadGamesData();
-  }, [searchQuery]);
+  }, [searchQuery, currentPage]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting) && !gamesAreOver) {
+        setCurrentPage((p) => p + 1);
+      }
+    })
+
+    const observed = document.getElementById('observed');
+    if (observed) {
+      observer.observe(observed);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -43,8 +81,8 @@ const Search = () => {
               )
             }
           </div>
-
         }
+        <div id='observed'/>
       </main>
       <Footer />
     </>

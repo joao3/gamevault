@@ -46,6 +46,7 @@
 
 .gamesCarousel > .carouselContainer > .carousel > .gameCardLink > .gameTitleCard {
   width: 222px;
+  height: 295px;
   background-color: var(--dark2);
   display: flex;
   justify-content: center;

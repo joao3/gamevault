@@ -9,9 +9,10 @@ import Header from './components/Header/Header';
 import Search from './pages/Search/Search';
 
 const App = () => {
+  
   return (
     <BrowserRouter>
-        <Header />
+      <Header />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Search />} path="/games/search" />
