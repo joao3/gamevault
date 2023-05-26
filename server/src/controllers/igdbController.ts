@@ -1,17 +1,17 @@
-import { Request, Response } from "express"
-import { igdbRequest } from "../services/igdb"
+import { Request, Response } from 'express';
+import { igdbRequest } from '../services/igdb';
 
 
 const getGamesByIdList = async (idList: Array<number>) => {
 
-  const query = `fields name, cover.image_id; where id = (${idList.join(", ")}); limit ${idList.length};`;
-  const apiResponse = await igdbRequest(query, "games");
+  const query = `fields name, cover.image_id; where id = (${idList.join(', ')}); limit ${idList.length};`;
+  const apiResponse = await igdbRequest(query, 'games');
 
   if (apiResponse.status === 200) {
     const data = await apiResponse.json();
     return data;
   }
-}
+};
 
 const getCurrentTimestamp = () => (Math.floor((Date.now()/ 1000)));
 
@@ -27,7 +27,7 @@ class IgdbController {
 
   static getRecentlyReleasedGames = async (req: Request, res: Response) => {
     const query = `fields game; where date < ${(getCurrentTimestamp()).toString()}; limit 25; sort date desc;`;
-    const apiResponse = await igdbRequest(query, "release_dates");
+    const apiResponse = await igdbRequest(query, 'release_dates');
 
     if (apiResponse.status === 200) {
       const releasesList = await apiResponse.json();
@@ -45,7 +45,7 @@ class IgdbController {
 
   static getComingSoonGames = async (req: Request, res: Response) => {
     const query = `fields game; where date > ${(getCurrentTimestamp()).toString()}; limit 25; sort date asc;`;
-    const apiResponse = await igdbRequest(query, "release_dates");
+    const apiResponse = await igdbRequest(query, 'release_dates');
 
     if (apiResponse.status === 200) {
       const releasesList = await apiResponse.json();
@@ -77,7 +77,7 @@ class IgdbController {
     artworks; 
     where id = ${req.params.gameId};`;
 
-    const apiResponse = await igdbRequest(query, "games");
+    const apiResponse = await igdbRequest(query, 'games');
 
     if (apiResponse.status === 200) {
       const gameData = await apiResponse.json();
@@ -97,7 +97,7 @@ class IgdbController {
     }
 
     const apiQuery = `fields name, cover.image_id; search "${searchQuery}"; offset ${offset}; limit ${gamesPerPage};`;
-    const apiResponse = await igdbRequest(apiQuery, "games");
+    const apiResponse = await igdbRequest(apiQuery, 'games');
 
     if (apiResponse.status === 200) {
       const data = await apiResponse.json();

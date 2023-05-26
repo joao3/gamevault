@@ -1,6 +1,7 @@
 import fetch, { Response } from 'node-fetch';
 
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 const igdbRequest = async (query: string, endPoint: string): Promise<Response> => {
   const requestConfig = {
@@ -15,6 +16,6 @@ const igdbRequest = async (query: string, endPoint: string): Promise<Response> =
 
   const response = await fetch(`https://api.igdb.com/v4/${endPoint}`, requestConfig);
   return response;
-}
+};
 
 export { igdbRequest };
