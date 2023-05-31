@@ -3,8 +3,8 @@ name: server_ci
 on: [ pull_request, push ]
 
 jobs:
-  lint:
-    name: lint
+  check-code:
+    name: check-code
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,10 @@ jobs:
         working-directory: ./server
         run: npm ci
         
-      - name: lint        
+      - name: Linting        
         run: npm run lint
+        working-directory: ./server
+
+      - name: Type Checking        
+        run: npm run type-check
         working-directory: ./server
