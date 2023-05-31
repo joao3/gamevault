@@ -4,5 +4,8 @@
     },
     "eslint.workingDirectories": [
         "src"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": false,
+    }
 }
