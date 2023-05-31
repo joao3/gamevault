@@ -4,7 +4,7 @@ import igdb from './igdbRoutes';
 const routes = (app: Express) => {
   app.use(
     express.json(),
-    igdb
+    igdb,
   );
 };
 

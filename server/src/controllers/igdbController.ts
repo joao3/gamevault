@@ -1,9 +1,7 @@
 import { Request, Response } from 'express';
 import { igdbRequest } from '../services/igdb';
 
-
 const getGamesByIdList = async (idList: Array<number>) => {
-
   const query = `fields name, cover.image_id; where id = (${idList.join(', ')}); limit ${idList.length};`;
   const apiResponse = await igdbRequest(query, 'games');
 
@@ -13,16 +11,19 @@ const getGamesByIdList = async (idList: Array<number>) => {
   }
 };
 
-const getCurrentTimestamp = () => (Math.floor((Date.now()/ 1000)));
+const getCurrentTimestamp = () => (Math.floor((Date.now() / 1000)));
 
 class IgdbController {
   static getPopularGames = async (req: Request, res: Response) => {
-    // Hard coded list of games (igdb does not provide a popularity endpoint or popularity field on the game).
-    const gamesIdList = [76747, 136625, 1905, 242408, 126459, 115, 1020, 205780, 2963, 26128, 15536, 125174, 7360, 141503, 3277];
+    // Hard coded list of games
+    // (igdb does not provide a popularity endpoint or popularity field on the game).
+    const gamesIdList = [
+      76747, 136625, 1905, 242408, 126459, 115, 1020, 205780,
+      2963, 26128, 15536, 125174, 7360, 141503, 3277,
+    ];
 
     const data = await getGamesByIdList(gamesIdList);
     res.status(200).json(data);
-
   };
 
   static getRecentlyReleasedGames = async (req: Request, res: Response) => {
@@ -62,8 +63,7 @@ class IgdbController {
   };
 
   static getGameData = async (req: Request, res: Response) => {
-    const query = 
-    `fields 
+    const query = `fields 
     name,
     cover.image_id,
     first_release_date,
