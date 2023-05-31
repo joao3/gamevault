@@ -8,9 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
         with:
           node-version: 19
+      
+      - name: Code Checkout
+        uses: actions/checkout@v3
+        
+      - name: Install Dependencies
+        working-directory: ./server
+        run: npm ci
+        
+      - name: lint        
       - run: npm run lint
         working-directory: ./server
