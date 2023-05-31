@@ -12,5 +12,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 19
-      - working-directory: ./server
       - run: npm run lint
+        working-directory: ./server
