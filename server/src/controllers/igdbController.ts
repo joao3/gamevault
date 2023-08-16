@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { igdbRequest } from '../services/igdb';
+import igdbRequest from '../services/igdb';
 
 const getGamesByIdList = async (idList: Array<number>) => {
   const query = `fields name, cover.image_id; where id = (${idList.join(', ')}); limit ${idList.length};`;
@@ -9,6 +9,8 @@ const getGamesByIdList = async (idList: Array<number>) => {
     const data = await apiResponse.json();
     return data;
   }
+
+  return null;
 };
 
 const getCurrentTimestamp = () => (Math.floor((Date.now() / 1000)));

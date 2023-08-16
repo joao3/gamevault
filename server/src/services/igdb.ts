@@ -19,4 +19,4 @@ const igdbRequest = async (query: string, endPoint: string): Promise<Response> =
   return response;
 };
 
-export { igdbRequest };
+export default igdbRequest;
