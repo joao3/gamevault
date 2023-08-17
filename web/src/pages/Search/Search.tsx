@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 
 import './Search.css';
+import Card from '../../components/Card/Card';
 
 const Search = () => {
   const [searchPrams] = useSearchParams();
@@ -73,11 +74,12 @@ const Search = () => {
           <div className='games'>
             {
               gamesData.map((game: { id: number, name: string, cover: { id: number, image_id: string } }) =>
-                <Link to={`/games/${game.id}`} key={game.id} className='gameCardLink'>
-                  {game.cover ?
-                    <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt=''></img> :
-                    <div className='gameTitleCard'><h3>{game.name}</h3></div>}
-                </Link>
+                <Card 
+                  id={game.id}
+                  title={game.name}
+                  link={`/games/${game.id}`}
+                  imageLink={game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg` : null} 
+                />
               )
             }
           </div>

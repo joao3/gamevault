@@ -35,7 +35,7 @@ const Header = () => {
           <li><NavLink to='/'> Home </NavLink></li>
           <li><NavLink to='#'> Lists </NavLink></li>
           <li><NavLink to='#'> Genres </NavLink></li>
-          <li><NavLink to='#'> Plataforms </NavLink></li>
+          <li><NavLink to='#'> Platforms </NavLink></li>
         </ul>
       </nav>
 

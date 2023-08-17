@@ -1,0 +1,34 @@
+.cardLink > img {
+  width: 222px;
+  height: 295px;
+  transition: all 0.3s ease;
+  transform: scale(0.9);
+  cursor: pointer;
+}
+
+.cardLink > img:hover {
+  transform: scale(1);
+}
+
+.cardLink > .cardTitle {
+  width: 222px;
+  height: 295px;
+  background-color: var(--dark2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  transform: scale(0.9);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.cardLink > .cardTitle:hover {
+  transform: scale(1);
+}
+
+.cardLink > .cardTitle > h3 {
+  text-align: center;
+  display: inline-block;
+  margin: 16px;
+}
