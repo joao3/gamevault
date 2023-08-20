@@ -1,0 +1,21 @@
+.platformsContainer {
+    min-height: 74vh;
+    padding-top: 100px;
+    margin-left: 64px;
+    margin-right: 64px;
+}
+  
+.platformsContainer > h1 {
+    margin-top: 32px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.platformsContainer > .platforms {
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(222px, 1fr));
+    align-items: center;
+    justify-items: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Footer from '../../components/Footer/Footer';
-
 import './Game.css';
 
 const Home = () => {
@@ -47,7 +45,6 @@ const Home = () => {
           <h2>Description</h2>
           <p>{gameData.summary}</p>
         </main>}
-      <Footer />
     </>
   );
 };

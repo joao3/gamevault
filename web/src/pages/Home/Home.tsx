@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
 import GamesCarousel from '../../components/GamesCarousel/GamesCarousel';
-import Footer from '../../components/Footer/Footer';
 
 import './Home.css';
 
@@ -52,7 +51,6 @@ const Home = () => {
       <GamesCarousel title='Recently Released' games={recentlyReleasedGames} />
       <GamesCarousel title='Coming Soon' games={comingSoonGames} />
 
-      <Footer />
     </>
   );
 };

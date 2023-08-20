@@ -8,6 +8,8 @@ router
   .get('/games/recently-released', IgdbController.getRecentlyReleasedGames)
   .get('/games/coming-soon', IgdbController.getComingSoonGames)
   .get('/games/search', IgdbController.searchByName)
-  .get('/games/:gameId', IgdbController.getGameData);
+  .get('/games/:gameId', IgdbController.getGameData)
+  .get('/genres', IgdbController.getGenres)
+  .get('/platforms', IgdbController.getPlatforms);
 
 export default router;

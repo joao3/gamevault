@@ -106,6 +106,26 @@ class IgdbController {
       res.status(200).json(data);
     }
   };
+
+  static getGenres = async (req: Request, res: Response) => {
+    const apiQuery = 'fields id, name, slug; limit 500; sort name;';
+    const apiResponse = await igdbRequest(apiQuery, 'genres');
+
+    if (apiResponse.status === 200) {
+      const data = await apiResponse.json();
+      res.status(200).json(data);
+    }
+  };
+
+  static getPlatforms = async (req: Request, res: Response) => {
+    const apiQuery = 'fields id, name, slug; limit 500; sort name;';
+    const apiResponse = await igdbRequest(apiQuery, 'platforms');
+
+    if (apiResponse.status === 200) {
+      const data = await apiResponse.json();
+      res.status(200).json(data);
+    }
+  };
 }
 
 export default IgdbController;

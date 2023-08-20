@@ -34,8 +34,8 @@ const Header = () => {
         <ul className='navLinks'>
           <li><NavLink to='/'> Home </NavLink></li>
           <li><NavLink to='#'> Lists </NavLink></li>
-          <li><NavLink to='#'> Genres </NavLink></li>
-          <li><NavLink to='#'> Platforms </NavLink></li>
+          <li><NavLink to='/genres'> Genres </NavLink></li>
+          <li><NavLink to='/platforms'> Platforms </NavLink></li>
         </ul>
       </nav>
 

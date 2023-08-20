@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import Footer from '../../components/Footer/Footer';
 
 import './Search.css';
 import Card from '../../components/Card/Card';
@@ -86,7 +85,6 @@ const Search = () => {
         }
         <div id='observed'/>
       </main>
-      <Footer />
     </>
   );
 };
