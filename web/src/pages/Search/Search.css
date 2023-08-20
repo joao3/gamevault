@@ -12,9 +12,10 @@
 }
 
 .searchContent > .games {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;  
+  grid-template-columns: repeat(auto-fit, minmax(222px, 1fr));
+  align-items: center;
+  justify-items: center;
   margin-top: 32px;
   margin-bottom: 32px;
 }
