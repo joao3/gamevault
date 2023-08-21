@@ -25,11 +25,11 @@ const Genres = () => {
      { genres.length > 0 && 
       <div className='genres'>
         {
-          genres.map((genre) => 
+          genres.map((genre: {id: number, name: string}) => 
             <Card
-              id={genre.slug}
+              id={genre.id}
               title={genre.name}
-              link=''
+              link={`/genres/${genre.id}`}
             />
           )
         }

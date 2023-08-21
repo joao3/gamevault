@@ -25,11 +25,11 @@ const Platforms = () => {
      { platforms.length > 0 && 
       <div className='platforms'>
         {
-          platforms.map((platform) => 
+          platforms.map((platform: {id: number, name: string}) => 
             <Card
-              id={platform.slug}
+              id={platform.id}
               title={platform.name}
-              link=''
+              link={`/platforms/${platform.id}`}
             />
           )
         }

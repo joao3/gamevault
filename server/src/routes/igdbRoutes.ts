@@ -10,6 +10,8 @@ router
   .get('/games/search', IgdbController.searchByName)
   .get('/games/:gameId', IgdbController.getGameData)
   .get('/genres', IgdbController.getGenres)
-  .get('/platforms', IgdbController.getPlatforms);
+  .get('/genres/:genreId', IgdbController.getGamesByGenre)
+  .get('/platforms', IgdbController.getPlatforms)
+  .get('/platforms/:platformId', IgdbController.getGamesByPlatform);
 
 export default router;

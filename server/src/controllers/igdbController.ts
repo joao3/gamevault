@@ -117,9 +117,39 @@ class IgdbController {
     }
   };
 
+  static getGamesByGenre = async (req: Request, res: Response) => {
+    const { genreId } = req.params;
+    const pageNumber = Number(req.query.page);
+    const gamesPerPage = 49;
+    const offset = (pageNumber - 1) * gamesPerPage;
+
+    const apiQuery = `fields name, cover.image_id; where genres = ${genreId}; offset ${offset}; limit ${gamesPerPage};`;
+    const apiResponse = await igdbRequest(apiQuery, 'games');
+
+    if (apiResponse.status === 200) {
+      const data = await apiResponse.json();
+      res.status(200).json(data);
+    }
+  };
+
   static getPlatforms = async (req: Request, res: Response) => {
     const apiQuery = 'fields id, name, slug; limit 500; sort name;';
     const apiResponse = await igdbRequest(apiQuery, 'platforms');
+
+    if (apiResponse.status === 200) {
+      const data = await apiResponse.json();
+      res.status(200).json(data);
+    }
+  };
+
+  static getGamesByPlatform = async (req: Request, res: Response) => {
+    const { platformId } = req.params;
+    const pageNumber = Number(req.query.page);
+    const gamesPerPage = 49;
+    const offset = (pageNumber - 1) * gamesPerPage;
+
+    const apiQuery = `fields name, cover.image_id; where platforms = ${platformId}; offset ${offset}; limit ${gamesPerPage};`;
+    const apiResponse = await igdbRequest(apiQuery, 'games');
 
     if (apiResponse.status === 200) {
       const data = await apiResponse.json();
