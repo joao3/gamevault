@@ -13,7 +13,7 @@ const Search = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
 
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const preveSearcgParamsRef = useRef(searchQuery);
+  const prevSearchParamsRef = useRef(searchQuery);
 
   const [gamesAreOver, setGamesAreOver] = useState(false);
 
@@ -24,11 +24,11 @@ const Search = () => {
   }
 
   useEffect(() => {
-    if (!isFirstLoad && searchQuery !== preveSearcgParamsRef.current) {
+    if (!isFirstLoad && searchQuery !== prevSearchParamsRef.current) {
       resetStates();
     }
     setIsFirstLoad(false);
-    preveSearcgParamsRef.current = searchQuery;
+    prevSearchParamsRef.current = searchQuery;
   }, [searchQuery]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Search = () => {
           setGamesAreOver(true);
         }
         else {
-          setGamesData([...gamesData, ...data]);
+          setGamesData((currentGames: []) => [...currentGames, ...data]);
           setDataLoaded(true);
         }
       }
